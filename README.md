@@ -156,7 +156,7 @@ This means when management sees a number for "total volume," it's the *real* vol
 
 This is a huge win for the compliance team. They can just filter for that flag instead of hunting for needles in a haystack.
 
-### We Create a "Single Source of Truth"
+### -- We Create a "Single Source of Truth"
 **The Problem:** The biggest issue, honestly, is the lack of a "single source of truth." Right now, analysts are probably querying the messy `raw_` tables directly.
 
 **My Solution:** The star schema *is* the solution. We tell everyone: "You are no longer allowed to touch the `raw_` tables. You **only** query the clean `dim_` and `fact_` tables."
