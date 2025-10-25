@@ -131,7 +131,7 @@ So, "Data Governance" is just a fancy term for how we're going to fix that. My e
 
 Here's how I'm tackling their specific concerns:
 
-### We Only Count What's Real
+### -- We Only Count What's Real
 **The Problem:** The raw data is full of `PENDING` trades, `CANCELLED` trades, and `FAILED` transfers. If we just sum up the raw tables, our revenue and volume numbers would be completely wrong.
 
 **My Solution:** I built a hard rule right into the code.
@@ -140,14 +140,14 @@ Here's how I'm tackling their specific concerns:
 
 This means when management sees a number for "total volume," it's the *real* volume from *actual, completed* transactions. This is the single most important fix.
 
-### We Stop Duplicates at the Door
+### -- We Stop Duplicates at the Door
 **The Problem:** The PDF mentioned "duplicate trades." This is a huge issue. If a $50k trade shows up twice, it throws off all our metrics.
 
 **My Solution:** I've made it impossible for the database to even accept a duplicate.
 * The `trade_key` in `fact_trades` and `transfer_key` in `fact_p2p_transfers` are both set as `PRIMARY KEY`s.
 * If the raw data feed tries to send the same `trade_id` twice, the database itself will just reject the second one. The `ON CONFLICT DO NOTHING` logic in my script is just an extra layer of safety. This plugs that leak for good.
 
-### We Define "Suspicious"
+### -- We Define "Suspicious"
 **The Problem:** The team is worried about "suspiciously high-value" activity. Right now, that's just a gut feeling. We need to turn that gut feeling into a real, automated rule.
 
 **My Solution:** We add a new flag column (like `is_suspicious_flag`) to the `fact_` tables. We'd have to sit down with the compliance team to agree on the logic, but it would be simple, like:
