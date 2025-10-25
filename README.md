@@ -61,6 +61,7 @@ with (format csv, header);
 copy raw_p2p_transfers 
 from 'C:\Users\bobse\Downloads\Personal Code\Test Technical\Pintu\1-Data\raw_p2p_transfers.csv' 
 with (format csv, header);
+```
 
 ### Step 3: Run the Transformations
 
@@ -86,6 +87,7 @@ And that’s the full setup.
 After these three steps, the database is fully built and ready for analysis.  
 Everything should be clean, well structured, and easy to query from here.
 
+---
 # Section 2
 
 ## 2. My Thinking on Data Lineage & ERD
@@ -116,6 +118,7 @@ Here’s a quick visual of the model:
 
 ![My Data Model ERD](https://drive.google.com/file/d/16EvFU4sdh0haXi8wsl6KFFfzPYtmicsw/view?usp=sharing)
 
+---
 # Section 3
 
 ## 3. My Data Governance Plan
