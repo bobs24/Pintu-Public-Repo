@@ -116,7 +116,7 @@ This structure makes it easy to join data for analysis without overcomplicating 
 
 Here’s a quick visual of the model:
 
-![My Data Model ERD](https://raw.githubusercontent.com/bobs24/Pintu-Public-Repo/main/images/ERD.jpg)
+![My Data Model ERD](https://raw.githubusercontent.com/bobs24/Pintu-Public-Repo/images/ERD.jpg)
 
 ---
 # Section 3
