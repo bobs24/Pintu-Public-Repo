@@ -90,7 +90,7 @@ Everything should be clean, well structured, and easy to query from here.
 ---
 # Section 2
 
-## 2. My Thinking on Data Lineage & ERD
+## My Thinking on Data Lineage & ERD
 
 ### Data Lineage
 
@@ -116,12 +116,12 @@ This structure makes it easy to join data for analysis without overcomplicating 
 
 Here’s a quick visual of the model:
 
-![My Data Model ERD](https://drive.google.com/file/d/16EvFU4sdh0haXi8wsl6KFFfzPYtmicsw/view?usp=sharing)
+![My Data Model ERD](https://raw.githubusercontent.com/bobs24/Pintu-Public-Repo/main/images/ERD.jpg)
 
 ---
 # Section 3
 
-## 3. My Data Governance Plan
+## My Data Governance Plan
 
 Here's my take on the data governance part.
 
