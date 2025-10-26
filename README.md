@@ -144,7 +144,7 @@ This means when management sees a number for "total volume," it's the *real* vol
 **The Problem:** The PDF mentioned "duplicate trades." This is a huge issue. If a $50k trade shows up twice, it throws off all our metrics.
 
 **My Solution:** I've made it impossible for the database to even accept a duplicate.
-* The `trade_key` in `fact_trades` and `transfer_key` in `fact_p2p_transfers` are both set as `PRIMARY KEY`s.
+* The `trade_key` in `fact_trades` and `transfer_key` in `fact_p2p_transfers` are both set as `PRIMARY KEYs`.
 * If the raw data feed tries to send the same `trade_id` twice, the database itself will just reject the second one. The `ON CONFLICT DO NOTHING` logic in my script is just an extra layer of safety. This plugs that leak for good.
 
 ### -- We Define "Suspicious"
