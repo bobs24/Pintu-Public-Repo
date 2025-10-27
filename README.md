@@ -4,11 +4,11 @@ Hi there, thanks for reviewing my project.
 This document explains everything I did and how you can rebuild the database from scratch.
 
 I decided to make this a full, reproducible project using PostgreSQL.  
-Instead of just sharing a few scripts, I wanted you to see the whole workflow clearly — from raw data to final, clean tables ready for analysis.
+Instead of just sharing a few scripts, I wanted you to see the whole workflow clearly from raw data to final, clean tables ready for analysis.
 
 The folder structure is pretty simple and divided into three parts that reflect the process:
 
-* `/1-Data/`: contains the 4 original CSV files you provided.  
+* `/1-Data/`: contains the 4 original CSV files.  
 * `/2-schemas/`: includes all the SQL scripts to create the database tables. I split this into two groups — one for the raw data (as-is from CSV) and one for the final cleaned model.  
 * `/3-transformations/`: this is where all the transformation logic lives. These scripts take the messy raw data and turn it into structured, typed tables.
 
@@ -24,12 +24,12 @@ If you follow them in order, you’ll end up with a fully loaded and cleaned dat
 
 ### Step 1: Create the Tables
 
-First, we create the empty tables that define the database structure.  
+First, create the empty tables that define the database structure.  
 You can find all the scripts inside the `/2-schemas/` folder.
 
 1. Run `create_raw_tables.sql`.  
    This will build four “raw” tables that match the CSV structure.  
-   All columns use `varchar(255)` for now — it’s easier since we’ll clean them later.
+   All columns use `varchar(255)` for now, it’s easier since I’ll clean them later.
 
 2. Run `create_model_tables.sql`.  
    This one creates the final star schema, including `dim_users`, `dim_tokens`, `dim_date`, `fact_trades`, and `fact_p2p_transfers`.  
@@ -39,11 +39,11 @@ You can find all the scripts inside the `/2-schemas/` folder.
 
 ### Step 2: Load the CSV Data
 
-Now that the raw tables exist, we can load the CSVs into them.  
+Now that the raw tables exist, I can load the CSVs into them.  
 The fastest way in PostgreSQL is to use the `COPY` command.
 
 You can run these commands in your SQL tool (like DBeaver or psql).  
-Just make sure the file paths match your local setup — these examples assume Windows paths.
+Just make sure the file paths match your local setup, these examples assume Windows paths.
 
 ```sql
 copy raw_users 
@@ -97,7 +97,7 @@ Everything should be clean, well structured, and easy to query from here.
 I structured the database in three clear layers to make it easier to trace how data moves and changes from the raw input all the way to the analytics layer. This setup helps ensure transparency, repeatability, and trust in the final results.
 
 1. **Raw Layer (`raw_` tables):**  
-   This is the starting point — basically the "landing zone" for all incoming data. The `COPY` command loads the raw CSV files directly into these tables without any modification. Every record is stored as text exactly as it came in, so we always have a true reference of the original data. We don’t modify anything here; it’s our untouched source of truth.
+   This is the starting point — basically the "landing zone" for all incoming data. The `COPY` command loads the raw CSV files directly into these tables without any modification. Every record is stored as text exactly as it came in, so I always have a true reference of the original data. I don’t modify anything here; it’s my untouched source of truth.
 
 2. **Transformation Layer (`3-transformations` scripts):**  
    This is where most of the data cleaning and business logic happens. The SQL scripts in this layer pull data from the raw tables and fix issues like inconsistent text formatting, incorrect data types, and invalid records (for example, removing `PENDING` trades). They also compute new metrics, such as converting trade amounts into `volume_usd`, so the data becomes more meaningful and ready for analysis.
